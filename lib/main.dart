@@ -21,11 +21,11 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Wedding Services',
       routes: {
-        '/home': (context) => const HomeScreen(),
+        '/home': (context) => HomeScreen(),
         '/services': (context) => const ServicesScreen(),
         '/account': (context) => const AccountScreen(),
       },
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }

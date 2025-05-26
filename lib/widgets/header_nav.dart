@@ -9,7 +9,7 @@ class HeaderNav extends StatelessWidget {
       color: Color(0xFF3A693A),
       height: 100,
       alignment: Alignment.center,
-      padding: EdgeInsets.only(left: 50, right: 50),
+      padding: EdgeInsets.only(left: 50, right: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
