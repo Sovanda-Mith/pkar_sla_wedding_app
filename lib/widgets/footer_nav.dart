@@ -36,6 +36,7 @@ class FooterNav extends StatelessWidget {
                       color: Color.fromRGBO(0, 0, 0, 1),
                     ),
                   ),
+                  const SizedBox(height: 4),
                 ],
               ),
             );
