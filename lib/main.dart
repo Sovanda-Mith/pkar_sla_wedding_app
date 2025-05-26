@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import './widgets/footer_nav.dart';
-import './screens//home_screen.dart';
+import './screens/home_screen.dart';
 import './screens/services_screen.dart';
-import './screens//account_screen.dart';
+import './screens/account_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         '/services': (context) => const ServicesScreen(),
         '/account': (context) => const AccountScreen(),
       },
-      home: FooterNav(),
+      home: const HomeScreen(),
     );
   }
 }
