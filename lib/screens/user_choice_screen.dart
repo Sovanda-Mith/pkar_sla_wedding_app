@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'first_launch_screen.dart';
 import 'user_register_screen.dart';
+import 'business_register_screen.dart';
 
 class UserChoiceScreen extends StatelessWidget {
   const UserChoiceScreen({super.key});
@@ -121,7 +122,7 @@ class UserChoiceScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const FirstLaunchPage(),
+                          builder: (context) => const BusinessRegister(),
                         ),
                       );
                     },

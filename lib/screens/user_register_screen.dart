@@ -192,7 +192,7 @@ class UserRegister extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 40),
             Image.asset(
               'assets/register.png', // Replace with your asset path
               width: double.infinity,
