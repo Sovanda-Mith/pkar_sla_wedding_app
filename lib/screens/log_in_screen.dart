@@ -167,7 +167,7 @@ class LogInScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Image.asset(
-              'assets/couple.png', // Replace with your asset path
+              'assets/couple.png', 
               width: double.infinity,
             ),
           ],
