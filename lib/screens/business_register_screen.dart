@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pkar_sla_wedding_app/screens/account_screen.dart';
 import 'package:pkar_sla_wedding_app/screens/user_choice_screen.dart';
 
 void main() {
@@ -51,25 +52,29 @@ class _BusinessRegisterState extends State<BusinessRegister> {
   void _showCitySelectDialog() async {
     final List<String> cities = [
       'ភ្នំពេញ',
-      'កណ្តាល',
       'បាត់ដំបង',
-      'សៀមរាប',
-      'ព្រះសីហនុ',
-      'កំពង់ចាម',
-      'កំពង់ធំ',
-      'តាកែវ',
-      'កំពត',
-      'កែប',
-      'ភ្នំពេញ',
       'កណ្តាល',
-      'បាត់ដំបង',
-      'សៀមរាប',
-      'ព្រះសីហនុ',
       'កំពង់ចាម',
+      'កំពង់ឆ្នាំង',
+      'កំពង់ស្ពឺ',
       'កំពង់ធំ',
-      'តាកែវ',
       'កំពត',
+      'កណ្ដាល',
       'កែប',
+      'កោះកុង',
+      'ក្រចេះ',
+      'មណ្ឌលគិរី',
+      'ឧត្ដរមានជ័យ',
+      'ប៉ៃលិន',
+      'ព្រះវិហារ',
+      'ព្រះសីហនុ',
+      'ព្រៃវែង',
+      'រតនគិរី',
+      'សៀមរាប',
+      'ស្ទឹងត្រែង',
+      'ស្វាយរៀង',
+      'តាកែវ',
+      'ត្បូងឃ្មុំ',
     ];
 
     final List<String>? results = await showDialog(
@@ -91,7 +96,7 @@ class _BusinessRegisterState extends State<BusinessRegister> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(top: 40),
+            padding: const EdgeInsets.only(top: 10),
             child: Column(
               children: [
                 GestureDetector(
@@ -338,13 +343,11 @@ class _BusinessRegisterState extends State<BusinessRegister> {
 
                 const SizedBox(height: 30),
 
-                // Phone number
                 _buildLabel('លេខទូរស័ព្ទ'),
                 _buildTextField(),
 
                 const SizedBox(height: 30),
 
-                // Consent checkboxes
                 _buildConsentCheckbox(
                   value: contactPermission,
                   onChanged: (v) => setState(() => contactPermission = v),
@@ -366,7 +369,6 @@ class _BusinessRegisterState extends State<BusinessRegister> {
 
                 const SizedBox(height: 30),
 
-                // Submit button
                 Padding(
                   padding: const EdgeInsets.only(left: 110),
                   child: ElevatedButton(
@@ -381,7 +383,12 @@ class _BusinessRegisterState extends State<BusinessRegister> {
                       ),
                     ),
                     onPressed: () {
-                      // Handle submission logic here
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AccountScreen(),
+                        ),
+                      );
                     },
                     child: const Text(
                       'បង្កើតគណនី',
