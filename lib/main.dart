@@ -23,7 +23,9 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/home': (context) => HomeScreen(),
         '/services': (context) => const ServicesScreen(),
-        '/account': (context) => const AccountScreen(),
+        '/account':
+            (context) =>
+                const AccountScreen(isOwner: false, userType: UserType.normal),
       },
       home: HomeScreen(),
     );
