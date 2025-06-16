@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Photography Service',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        fontFamily: 'NotoSansKhmer-Regular',
-      ),
-      home: PhotographyServicePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Photography Service',
+//       theme: ThemeData(
+//         primarySwatch: Colors.green,
+//         fontFamily: 'NotoSansKhmer-Regular',
+//       ),
+//       home: PhotographyServicePage(),
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }
 
 class PhotographyServicePage extends StatelessWidget {
   const PhotographyServicePage({super.key});

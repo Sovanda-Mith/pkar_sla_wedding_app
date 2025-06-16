@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pkar_sla_wedding_app/screens/vendor_screen.dart';
+import './screens/venue_screen.dart';
 import './screens/home_screen.dart';
 import './screens/services_screen.dart';
 import './screens/account_screen.dart';
@@ -25,7 +27,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/launch': (context) => FirstLaunchPage(),
         '/home': (context) => HomeScreen(),
-        '/services': (context) => const ServicesScreen(),
+        '/vendor': (context) => const VendorScreen(),
+        '/venue': (context) => const PhotographyServicePage(),
         '/account': (context) => const AccountScreen(),
       },
       home: HomeScreen(),
