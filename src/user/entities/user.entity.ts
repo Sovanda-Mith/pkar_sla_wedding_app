@@ -11,6 +11,7 @@ import { UserProfile } from './user-profile.entity';
 import { BusinessProfile } from 'src/business/entities/business-profile.entity';
 import { Message } from 'src/chat/entities/message.entity';
 import { Conversation } from 'src/chat/entities/conversation.entity';
+import { Booking } from 'src/booking/entities/booking.entity';
 
 @Entity()
 export class User {
@@ -37,6 +38,9 @@ export class User {
     nullable: true,
   })
   businessProfile: BusinessProfile;
+
+  @OneToMany(() => Booking, (booking) => booking.customer)
+  bookings: Booking[];
 
   @OneToMany(() => Message, (message) => message.sender)
   messagesSent: Message[];

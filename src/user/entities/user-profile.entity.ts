@@ -1,4 +1,10 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { User } from './user.entity';
 
 @Entity()
@@ -17,4 +23,7 @@ export class UserProfile {
 
   @Column({ nullable: true })
   bio?: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }

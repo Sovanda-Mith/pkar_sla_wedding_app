@@ -1,6 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { BusinessProfile } from 'src/business/entities/business-profile.entity';
 import { ServiceType } from '../enum/service-type.enum';
+import { Booking } from 'src/booking/entities/booking.entity';
 
 @Entity('services')
 export class Service {
@@ -9,6 +16,9 @@ export class Service {
 
   @ManyToOne(() => BusinessProfile, (business) => business.services)
   business: BusinessProfile;
+
+  @OneToMany(() => Booking, (booking) => booking.service)
+  bookings: Booking[];
 
   @Column({ type: 'enum', enum: ServiceType })
   type: ServiceType;

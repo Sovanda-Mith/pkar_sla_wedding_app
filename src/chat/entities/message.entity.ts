@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Conversation } from './conversation.entity';
 import { User } from 'src/user/entities/user.entity';
 
@@ -6,6 +12,8 @@ export enum MessageType {
   TEXT = 'TEXT',
   IMAGE = 'IMAGE',
   AUDIO = 'AUDIO',
+  STICKER = 'STICKER',
+  VIDEO = 'VIDEO',
 }
 
 @Entity()
@@ -34,9 +42,15 @@ export class Message {
   @Column({ nullable: true })
   audioUrl?: string;
 
+  @Column({ nullable: true })
+  stickerUrl?: string;
+
+  @Column({ nullable: true })
+  videoUrl?: string;
+
   @Column({ default: false })
   isRead: boolean;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn()
   createdAt: Date;
 }

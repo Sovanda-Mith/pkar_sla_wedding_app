@@ -16,6 +16,10 @@ import { Conversation } from './chat/entities/conversation.entity';
 import { Message } from './chat/entities/message.entity';
 import { NotificationModule } from './notification/notification.module';
 import { Notification } from './notification/entities/notification.entity';
+import { BookingModule } from './booking/booking.module';
+import { Booking } from './booking/entities/booking.entity';
+import { BookingPayment } from './booking/entities/booking-payment.entity';
+import { BookingReview } from './booking/entities/booking-review.entity';
 
 @Module({
   imports: [
@@ -37,6 +41,8 @@ import { Notification } from './notification/entities/notification.entity';
         Conversation,
         Message,
         Notification,
+        Booking,
+        BookingPayment,
       ],
       database: process.env.POSTGRES_DB,
       synchronize: true,
@@ -47,6 +53,8 @@ import { Notification } from './notification/entities/notification.entity';
     BusinessModule,
     ChatModule,
     NotificationModule,
+    BookingModule,
+    BookingReview,
   ],
   controllers: [AppController],
   providers: [AppService],
