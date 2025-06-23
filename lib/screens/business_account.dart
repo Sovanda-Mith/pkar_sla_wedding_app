@@ -17,7 +17,7 @@ class BusinessAccountScreen extends StatelessWidget {
 }
 
 bool checkIfUserIsOwner() {
-  return false;
+  return true;
 }
 
 class BusinessAccountScreenViewer extends StatelessWidget {
@@ -65,7 +65,7 @@ class BusinessAccountScreenViewer extends StatelessWidget {
                   child: SizedBox(
                     width: 80,
                     height: 80,
-                   child: Align(
+                    child: Align(
                       alignment: Alignment.center,
                       child: Image.asset(
                         'assets/green_right_arrow.png',
@@ -153,6 +153,7 @@ Widget infoRow(String label, String value) {
 }
 
 // Owner
+
 class BusinessAccountScreenOwner extends StatefulWidget {
   const BusinessAccountScreenOwner({super.key});
 
@@ -163,7 +164,7 @@ class BusinessAccountScreenOwner extends StatefulWidget {
 
 class _BusinessAccountScreenOwnerState
     extends State<BusinessAccountScreenOwner> {
-  Set<String> selectedTypes = {'សេវាកម្មផ្សេងៗ'};
+  Set<String> selectedTypes = {'រោងការ', 'ម្ហូបអាហារ', 'សម្លៀកបំពាក់'};
 
   final List<String> options = [
     'រោងការ',
@@ -175,6 +176,13 @@ class _BusinessAccountScreenOwnerState
     'ទីកន្លែង',
     'ម្ហូបអាហារ',
   ];
+
+  final List<String> imageAssets = [
+    'assets/hall.png',
+    'assets/decor.png',
+    'assets/makeup.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,43 +191,43 @@ class _BusinessAccountScreenOwnerState
         child: Column(
           children: [
             const HeaderNav(),
-            const SizedBox(height: 8),
+            const SizedBox(height: 20),
             _buildMainImage(),
+            const SizedBox(height: 10),
             _buildImageGallery(),
-            const SizedBox(height: 16),
-            _buildEditableTextDisplay(),
-            const SizedBox(height: 16),
+            const SizedBox(height: 20),
+            _buildEditableInfo(),
+            const SizedBox(height: 30),
             _buildActionButtons(),
+            const SizedBox(height: 20),
+            const FooterNav(),
           ],
         ),
       ),
-      bottomNavigationBar: const FooterNav(),
     );
   }
 
   Widget _buildMainImage() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Stack(
         children: [
-          Container(
-            height: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              image: const DecorationImage(
-                image: AssetImage('assets/hall.png'),
-                fit: BoxFit.cover,
-                opacity: 0.7,
-              ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(
+              'assets/decorb.png',
+              height: 240,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
           ),
           Positioned(
-            top: 8,
-            right: 8,
+            top: 12,
+            right: 12,
             child: PopupMenuButton<String>(
-              icon: const Icon(Icons.edit, size: 20, color: Colors.white),
+              icon: const Icon(Icons.edit, color: Colors.white),
               onSelected: (value) {
-                print('$value selected for main image');
+                print('$value selected');
               },
               itemBuilder:
                   (context) => const [
@@ -246,37 +254,34 @@ class _BusinessAccountScreenOwnerState
   }
 
   Widget _buildImageGallery() {
-    final images = [
-      'assets/makeup.png',
-      'assets/music.png',
-      'assets/photographer.png',
-    ];
-
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          for (int i = 0; i < images.length; i++)
-            Stack(
+          ...imageAssets.map(
+            (img) => Stack(
               children: [
                 Container(
-                  width: 80,
+                  width: 90,
                   height: 80,
-                  margin: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     image: DecorationImage(
-                      image: AssetImage(images[i]),
+                      image: AssetImage(img),
                       fit: BoxFit.cover,
                     ),
                   ),
+                  margin: const EdgeInsets.only(right: 8),
                 ),
                 Positioned(
                   top: 4,
                   right: 4,
                   child: PopupMenuButton<String>(
-                    icon: const Icon(Icons.edit, size: 18),
-                    onSelected: (value) => print('$value selected on image $i'),
+                    icon: const Icon(Icons.edit, size: 18, color: Colors.white),
+                    onSelected: (value) {
+                      print('$value selected on $img');
+                    },
                     itemBuilder:
                         (context) => const [
                           PopupMenuItem(
@@ -298,7 +303,71 @@ class _BusinessAccountScreenOwnerState
                 ),
               ],
             ),
-          const Icon(Icons.arrow_forward, color: Colors.green),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const PhotoGallery();
+                  },
+                ),
+              );
+            },
+            child: Container(
+              width: 80,
+              height: 80,
+              padding: const EdgeInsets.all(20),
+              child: Align(
+                alignment: Alignment.center,
+                child: Image.asset('assets/green_right_arrow.png', width: 20),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEditableInfo() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _editableTextRow('ឈ្មោះហាង:', 'ឧត្តមមង្គល សំអាងការ'),
+          _editableTextRow(
+            'ប្រភេទ:',
+            selectedTypes.isEmpty
+                ? 'មិនទាន់ជ្រើសរើស'
+                : selectedTypes.join(', '),
+            onTap: _showMultiSelectDialog,
+          ),
+          _editableTextRow('តម្លៃ:', '5000 ៛'),
+          _editableTextRow('ទីតាំង:', 'ភ្នំពេញ'),
+          _editableTextRow('លេខទូរស័ព្ទ:', '012 345 678'),
+        ],
+      ),
+    );
+  }
+
+  Widget _editableTextRow(String label, String value, {VoidCallback? onTap}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(width: 6),
+          Expanded(child: Text(value, style: const TextStyle(fontSize: 16))),
+          IconButton(
+            icon: const Icon(Icons.edit, size: 18),
+            onPressed: onTap ?? () => print('Edit $label'),
+          ),
         ],
       ),
     );
@@ -306,7 +375,7 @@ class _BusinessAccountScreenOwnerState
 
   Widget _buildActionButtons() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         children: [
           ElevatedButton(
@@ -318,7 +387,7 @@ class _BusinessAccountScreenOwnerState
               ),
             ),
             onPressed: () {
-              // Save action here
+              print('Saved changes');
             },
             child: const Text('រក្សាទុក', style: TextStyle(fontSize: 18)),
           ),
@@ -332,97 +401,12 @@ class _BusinessAccountScreenOwnerState
               ),
             ),
             onPressed: () {
-              // Cancel edit action here
+              print('Canceled edits');
             },
             child: const Text(
               'បិទការកែប្រែទាំងអស់',
               style: TextStyle(fontSize: 18),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildEditableTextDisplay() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'ឈ្មោះហាង: ឯកមនុស្ស សាខាខាង',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(width: 6),
-              const Icon(Icons.edit, size: 18),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'ប្រភេទ: ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              Expanded(
-                child: Text(
-                  selectedTypes.isEmpty
-                      ? 'មិនទាន់ជ្រើសរើស'
-                      : selectedTypes.join(', '),
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.edit, size: 18),
-                onPressed: () {
-                  _showMultiSelectDialog();
-                },
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: const [
-              Text(
-                'តម្លៃ: ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              Text('5000 ៛', style: TextStyle(fontSize: 16)),
-              SizedBox(width: 4),
-              Icon(Icons.edit, size: 18),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: const [
-              Text(
-                'ទីតាំង: ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              Text('ភ្នំពេញ', style: TextStyle(fontSize: 16)),
-              SizedBox(width: 4),
-              Icon(Icons.edit, size: 18),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            children: const [
-              Text(
-                'លេខទូរស័ព្ទ: ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-              Text('012 345 678', style: TextStyle(fontSize: 16)),
-              SizedBox(width: 4),
-              Icon(Icons.edit, size: 18),
-            ],
           ),
         ],
       ),
@@ -439,27 +423,24 @@ class _BusinessAccountScreenOwnerState
           title: const Text('ជ្រើសរើសប្រភេទ'),
           content: StatefulBuilder(
             builder: (context, setState) {
-              return SizedBox(
-                width: double.maxFinite,
-                child: ListView(
-                  shrinkWrap: true,
-                  children:
-                      options.map((option) {
-                        return CheckboxListTile(
-                          title: Text(option),
-                          value: tempSelected.contains(option),
-                          onChanged: (bool? checked) {
-                            setState(() {
-                              if (checked == true) {
-                                tempSelected.add(option);
-                              } else {
-                                tempSelected.remove(option);
-                              }
-                            });
-                          },
-                        );
-                      }).toList(),
-                ),
+              return ListView(
+                shrinkWrap: true,
+                children:
+                    options.map((option) {
+                      return CheckboxListTile(
+                        title: Text(option),
+                        value: tempSelected.contains(option),
+                        onChanged: (bool? checked) {
+                          setState(() {
+                            if (checked == true) {
+                              tempSelected.add(option);
+                            } else {
+                              tempSelected.remove(option);
+                            }
+                          });
+                        },
+                      );
+                    }).toList(),
               );
             },
           ),
