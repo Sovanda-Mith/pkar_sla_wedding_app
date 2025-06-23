@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pkar_sla_wedding_app/screens/business_account_screen.dart';
+import 'package:pkar_sla_wedding_app/screens/business_account.dart';
 
 class ServicesScreen extends StatelessWidget {
   const ServicesScreen({super.key});

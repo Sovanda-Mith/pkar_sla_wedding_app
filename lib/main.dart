@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/screens/vendor_screen.dart';
 import './screens/venue_screen.dart';
 import './screens/home_screen.dart';
-import './screens/services_screen.dart';
-import './screens/account_screen.dart';
+import 'screens/business_account.dart';
 import './screens/first_launch_screen.dart';
 
 void main() {
@@ -23,13 +22,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wedding Services',
+      theme: ThemeData(fontFamily: 'Noto Sans Khmer'),
       initialRoute: '/launch',
       routes: {
         '/launch': (context) => FirstLaunchPage(),
         '/home': (context) => HomeScreen(),
         '/vendor': (context) => const VendorScreen(),
         '/venue': (context) => const PhotographyServicePage(),
-        '/account': (context) => const AccountScreen(),
+        '/businessAccount': (context) => BusinessAccountScreen(),
       },
       home: HomeScreen(),
     );
