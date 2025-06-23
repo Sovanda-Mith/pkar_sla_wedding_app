@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pkar_sla_wedding_app/screens/business_account_screen.dart';
 import 'package:pkar_sla_wedding_app/widgets/header_nav.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
 
@@ -48,7 +49,14 @@ class AccountScreen extends StatelessWidget {
               backgroundColor: Color(0xFF2E5F31),
               minimumSize: Size(360, 56),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const BusinessAccountScreen(),
+                ),
+              );
+            },
             child: Text(
               'ទំនាក់ទំនង',
               style: TextStyle(
