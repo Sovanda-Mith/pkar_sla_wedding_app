@@ -14,8 +14,8 @@ class TitleHeader extends StatelessWidget {
     this.onBackPressed,
     this.onChatPressed,
     this.onNotificationPressed,
-    this.unreadMessages = 0,
-    this.unreadNotifications = 0,
+    this.unreadMessages = 5,
+    this.unreadNotifications = 10,
   });
 
   @override

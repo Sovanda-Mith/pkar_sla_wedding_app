@@ -6,8 +6,8 @@ class HeaderNav extends StatelessWidget {
 
   const HeaderNav({
     super.key,
-    this.unreadMessages = 0,
-    this.unreadNotifications = 0,
+    this.unreadMessages = 5,
+    this.unreadNotifications = 10,
   });
 
   @override
