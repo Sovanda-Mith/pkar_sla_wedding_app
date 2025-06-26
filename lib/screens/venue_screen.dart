@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
+import 'package:pkar_sla_wedding_app/widgets/title_header.dart';
 
 class VenueScreen extends StatefulWidget {
   final String venueType;
@@ -106,6 +107,7 @@ class _VenueScreenState extends State<VenueScreen> {
       body: Column(
         children: [
           // Custom Header with back arrow and venue title
+          /*
           Container(
             color: Color(0xFF3A693A),
             height: 100,
@@ -157,6 +159,8 @@ class _VenueScreenState extends State<VenueScreen> {
               ],
             ),
           ),
+          */
+          TitleHeader(title: widget.venueType),
 
           // City Dropdown Bar
           GestureDetector(
