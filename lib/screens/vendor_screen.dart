@@ -5,7 +5,7 @@ import 'package:pkar_sla_wedding_app/screens/venue_screen.dart';
 
 class ServicesScreen extends StatelessWidget {
   const ServicesScreen({super.key});
-  
+
   static const List<ServiceItem> services = [
     ServiceItem(
       text: 'ជ្រើសរើសអ្នកផាត់មុខ',
@@ -68,24 +68,29 @@ class ServicesScreen extends StatelessWidget {
                 return SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: services
-                          .map((service) => ItemWidget(
-                                text: service.text,
-                                imageUrl: service.imageUrl,
-                                onTap: () => _onServiceTap(context, service),
-                              ))
-                          .toList(),
+                      children:
+                          services
+                              .map(
+                                (service) => ItemWidget(
+                                  text: service.text,
+                                  imageUrl: service.imageUrl,
+                                  onTap: () => _onServiceTap(context, service),
+                                ),
+                              )
+                              .toList(),
                     ),
                   ),
                 );
               },
             ),
           ),
-          SizedBox(height: 10,),
-          const FooterNav(currentRoute: '/vendor',),
+          SizedBox(height: 10),
+          const FooterNav(currentRoute: '/services'),
         ],
       ),
     );
@@ -97,14 +102,18 @@ class ServicesScreen extends StatelessWidget {
         service.serviceType == 'សម្លៀកបំពាក់' ||
         service.serviceType == 'រោងការ' ||
         service.serviceType == 'ជាងថតរូប' ||
-        service.serviceType == 'ទីកន្លែង' || 
-        service.serviceType == 'តន្រ្តី' || 
+        service.serviceType == 'ទីកន្លែង' ||
+        service.serviceType == 'តន្រ្តី' ||
         service.serviceType == 'ម្ហូបអាហារ' ||
         service.serviceType == 'ដេគ័រ') {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => VenueScreen(serviceType: service.text, venueType: service.serviceType),
+          builder:
+              (context) => VenueScreen(
+                serviceType: service.text,
+                venueType: service.serviceType,
+              ),
         ),
       );
     } else {
@@ -148,9 +157,7 @@ class ItemWidget extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -187,32 +194,41 @@ class ItemWidget extends StatelessWidget {
                   ),
                   child: SizedBox(
                     height: 120,
-                    child: imageUrl.startsWith('http')
-                        ? Image.network(
-                            imageUrl,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return _buildPlaceholder();
-                            },
-                            loadingBuilder: (context, child, loadingProgress) {
-                              if (loadingProgress == null) return child;
-                              return Center(
-                                child: CircularProgressIndicator(
-                                  value: loadingProgress.expectedTotalBytes != null
-                                      ? loadingProgress.cumulativeBytesLoaded /
-                                          loadingProgress.expectedTotalBytes!
-                                      : null,
-                                ),
-                              );
-                            },
-                          )
-                        : Image.asset(
-                            imageUrl,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return _buildPlaceholder();
-                            },
-                          ),
+                    child:
+                        imageUrl.startsWith('http')
+                            ? Image.network(
+                              imageUrl,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return _buildPlaceholder();
+                              },
+                              loadingBuilder: (
+                                context,
+                                child,
+                                loadingProgress,
+                              ) {
+                                if (loadingProgress == null) return child;
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    value:
+                                        loadingProgress.expectedTotalBytes !=
+                                                null
+                                            ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                loadingProgress
+                                                    .expectedTotalBytes!
+                                            : null,
+                                  ),
+                                );
+                              },
+                            )
+                            : Image.asset(
+                              imageUrl,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return _buildPlaceholder();
+                              },
+                            ),
                   ),
                 ),
               ),
@@ -228,11 +244,7 @@ class ItemWidget extends StatelessWidget {
       height: 120,
       color: Colors.grey[300],
       child: const Center(
-        child: Icon(
-          Icons.image,
-          color: Colors.grey,
-          size: 40,
-        ),
+        child: Icon(Icons.image, color: Colors.grey, size: 40),
       ),
     );
   }

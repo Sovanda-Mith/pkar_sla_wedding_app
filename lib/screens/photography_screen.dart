@@ -276,7 +276,7 @@ class _PhotographyScreenState extends State<PhotographyScreen> {
           ),
 
           SizedBox(height: 10),
-          const FooterNav(currentRoute: '/vendor'),
+          const FooterNav(currentRoute: '/services'),
         ],
       ),
     );

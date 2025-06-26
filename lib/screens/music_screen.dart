@@ -272,7 +272,7 @@ class _MusicScreenState extends State<MusicScreen> {
           ),
 
           SizedBox(height: 10),
-          const FooterNav(currentRoute: '/vendor'),
+          const FooterNav(currentRoute: '/services'),
         ],
       ),
     );

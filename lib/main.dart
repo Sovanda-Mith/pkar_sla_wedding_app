@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
         '/account':
             (context) =>
                 const AccountScreen(isOwner: true, userType: UserType.normal),
-        '/vendor': (context) => const ServicesScreen(),
+        '/services': (context) => const ServicesScreen(),
       },
       home: HomeScreen(),
     );

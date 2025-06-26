@@ -12,7 +12,7 @@ class FooterNav extends StatelessWidget {
       {
         'icon': 'assets/icons/service.png',
         'text': 'សេវាកម្ម',
-        'nav': '/vendor',
+        'nav': '/services',
       },
       {'icon': 'assets/icons/user.png', 'text': 'គណនី', 'nav': '/account'},
     ];

@@ -272,7 +272,7 @@ class _VenueScreenState extends State<VenueScreen> {
           ),
 
           SizedBox(height: 10),
-          const FooterNav(currentRoute: '/vendor'),
+          const FooterNav(currentRoute: '/services'),
         ],
       ),
     );

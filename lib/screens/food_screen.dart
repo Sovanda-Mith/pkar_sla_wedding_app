@@ -270,7 +270,7 @@ class _FoodScreenState extends State<FoodScreen> {
           ),
 
           SizedBox(height: 10),
-          const FooterNav(currentRoute: '/vendor'),
+          const FooterNav(currentRoute: '/services'),
         ],
       ),
     );

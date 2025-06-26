@@ -272,7 +272,7 @@ class _DecorScreenState extends State<DecorScreen> {
           ),
 
           SizedBox(height: 10),
-          const FooterNav(currentRoute: '/vendor'),
+          const FooterNav(currentRoute: '/services'),
         ],
       ),
     );

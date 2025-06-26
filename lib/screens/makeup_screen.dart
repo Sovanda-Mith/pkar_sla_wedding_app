@@ -272,7 +272,7 @@ class _MakeupScreenState extends State<MakeupScreen> {
           ),
 
           SizedBox(height: 10),
-          const FooterNav(currentRoute: '/vendor'),
+          const FooterNav(currentRoute: '/services'),
         ],
       ),
     );

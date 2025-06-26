@@ -272,7 +272,7 @@ class _ClothesScreenState extends State<ClothesScreen> {
           ),
 
           SizedBox(height: 10),
-          const FooterNav(currentRoute: '/vendor'),
+          const FooterNav(currentRoute: '/services'),
         ],
       ),
     );
