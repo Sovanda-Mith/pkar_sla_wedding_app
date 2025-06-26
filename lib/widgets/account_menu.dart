@@ -14,9 +14,7 @@ class AccountMenu extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 30,
-              backgroundImage: AssetImage(
-                'assets/images/default_avatar.png',
-              ), // Replace with your asset or network image
+              backgroundImage: AssetImage('assets/default_avatar.png'),
             ),
             const SizedBox(width: 16),
             Column(
@@ -45,6 +43,8 @@ class AccountMenu extends StatelessWidget {
         const SizedBox(height: 12),
 
         Card(
+          elevation: 2,
+          shadowColor: Colors.black12,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
@@ -56,10 +56,12 @@ class AccountMenu extends StatelessWidget {
                 trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                 onTap: () {
                   // Navigate to account info
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AccountInfoScreen(),
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (_, __, ___) => const AccountInfoScreen(),
+                      transitionsBuilder:
+                          (_, animation, __, child) =>
+                              FadeTransition(opacity: animation, child: child),
                     ),
                   );
                 },

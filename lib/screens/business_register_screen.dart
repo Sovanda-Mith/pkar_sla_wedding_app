@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pkar_sla_wedding_app/screens/business_account.dart';
+import 'package:pkar_sla_wedding_app/screens/account_screen.dart';
 import 'package:pkar_sla_wedding_app/screens/user_choice_screen.dart';
 
 void main() {
@@ -386,7 +386,11 @@ class _BusinessRegisterState extends State<BusinessRegister> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const BusinessAccountScreen(),
+                          builder:
+                              (context) => const AccountScreen(
+                                isOwner: true,
+                                userType: UserType.business,
+                              ),
                         ),
                       );
                     },

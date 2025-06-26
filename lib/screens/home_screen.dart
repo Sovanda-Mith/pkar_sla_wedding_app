@@ -131,7 +131,7 @@ class HomeScreen extends StatelessWidget {
                 }).toList(),
           ),
           Spacer(),
-          const FooterNav(),
+          const FooterNav(currentRoute: '/home'),
         ],
       ),
     );

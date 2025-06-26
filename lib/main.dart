@@ -3,7 +3,6 @@ import 'package:pkar_sla_wedding_app/screens/account_screen.dart';
 import 'package:pkar_sla_wedding_app/screens/vendor_screen.dart';
 import './screens/venue_screen.dart';
 import './screens/home_screen.dart';
-import 'screens/business_account.dart';
 import './screens/first_launch_screen.dart';
 
 void main() {
@@ -33,7 +32,6 @@ class _MyAppState extends State<MyApp> {
                 const AccountScreen(isOwner: true, userType: UserType.normal),
         '/vendor': (context) => const VendorScreen(),
         '/venue': (context) => const PhotographyServicePage(),
-        '/businessAccount': (context) => BusinessAccountScreen(),
       },
       home: HomeScreen(),
     );

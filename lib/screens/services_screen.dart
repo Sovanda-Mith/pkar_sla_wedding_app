@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pkar_sla_wedding_app/screens/business_account.dart';
+import 'package:pkar_sla_wedding_app/screens/account_screen.dart';
 
 class ServicesScreen extends StatelessWidget {
   const ServicesScreen({super.key});
@@ -15,7 +15,11 @@ class ServicesScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const BusinessAccountScreen(),
+                  builder:
+                      (context) => const AccountScreen(
+                        isOwner: false,
+                        userType: UserType.business,
+                      ),
                 ),
               );
             },

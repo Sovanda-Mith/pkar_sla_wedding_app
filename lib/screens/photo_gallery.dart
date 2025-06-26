@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
 import 'package:pkar_sla_wedding_app/widgets/header_nav.dart';
 
 class PhotoGallery extends StatelessWidget {
@@ -58,9 +57,6 @@ class PhotoGallery extends StatelessWidget {
                   );
                 }).toList(),
           ),
-
-          Spacer(),
-          const FooterNav(),
         ],
       ),
     );
