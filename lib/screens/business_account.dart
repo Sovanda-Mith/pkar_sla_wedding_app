@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/screens/home_screen.dart';
 import 'package:pkar_sla_wedding_app/screens/photo_gallery.dart';
+import 'package:pkar_sla_wedding_app/widgets/account_header.dart';
 import 'package:pkar_sla_wedding_app/widgets/header_nav.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
 import 'package:image_picker/image_picker.dart';
@@ -33,7 +34,7 @@ class BusinessAccountScreenViewer extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const HeaderNav(),
+          const AccountHeader(),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -167,7 +168,7 @@ class BusinessAccountScreenOwner extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const HeaderNav(),
+          const AccountHeader(),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
@@ -246,7 +247,7 @@ class BusinessAccountScreenOwner extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 25),
+          SizedBox(height: 10),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(0xFFAFDBAF),
@@ -262,6 +263,30 @@ class BusinessAccountScreenOwner extends StatelessWidget {
             },
             child: Text(
               'មើលជាអ្នកប្រើផ្សេង',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+                fontFamily: 'Noto Sans Khmer',
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFFAFDBAF),
+              minimumSize: Size(360, 56),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BusinessAccountScreenViewer(),
+                ),
+              );
+            },
+            child: Text(
+              'កែប្រែគណនី',
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.black,
