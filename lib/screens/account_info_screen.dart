@@ -56,7 +56,7 @@ class AccountInfoScreen extends StatelessWidget {
           ), // Customer ID
           _infoTile(
             title: 'ប្រភេទគណនី',
-            value: 'បុគ្គលល្អិត',
+            value: 'អ្នកប្រើប្រាស់',
           ), // Account Type: Individual
           _infoTile(
             title: 'ថ្ងៃចុះឈ្មោះ',
