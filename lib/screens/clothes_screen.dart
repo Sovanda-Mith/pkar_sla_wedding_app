@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
 
-class VenueScreen extends StatefulWidget {
-  final String venueType;
+class ClothesScreen extends StatefulWidget {
+  final String clothesType;
   
-  const VenueScreen({
+  const ClothesScreen({
     super.key,
-    required this.venueType, required String serviceType,
+    required this.clothesType, required String serviceType,
   });
 
   @override
-  State<VenueScreen> createState() => _VenueScreenState();
+  State<ClothesScreen> createState() => _ClothesScreenState();
 }
 
-class _VenueScreenState extends State<VenueScreen> {
+class _ClothesScreenState extends State<ClothesScreen> {
   String selectedCity = 'ភ្នំពេញ';
   bool isDropdownOpen = false;
 
-  // Get filtered venues based on selected city
-  List<VenueItem> get filteredVenues {
-    return venues.where((venue) => venue.type == selectedCity).toList();
+  // Get filtered clothes based on selected city
+  List<ClothesItem> get filteredClothes {
+    return clothes.where((clothes) => clothes.type == selectedCity).toList();
   }
 
 
@@ -36,61 +36,61 @@ class _VenueScreenState extends State<VenueScreen> {
     'កំពត',
   ];
 
-  final List<VenueItem> venues = [
-    VenueItem(
+  final List<ClothesItem> clothes = [
+    ClothesItem(
       name: 'សម្សាញ់ភ្លើង ភ្លើងអេឡិចត្រូនិច',
       type: 'កំពត',
       priceRange: '450\$ - 2000\$',
       imageUrl: 'assets/image1.png',
     ),
-    VenueItem(
+    ClothesItem(
       name: 'ចន្ទ្រា ផលិតវីដេអូខេមរា',
       type: 'កែប',
       priceRange: '500\$ - 1500\$',
       imageUrl: 'assets/image2.png',
     ),
-    VenueItem(
+    ClothesItem(
       name: 'សោភ័ណ្ឌ សេវាបង្ហាញផ្កា',
       type: 'បាត់ដំបង',
       priceRange: '150\$ - 600\$',
       imageUrl: 'assets/image3.png',
     ),
-    VenueItem(
+    ClothesItem(
       name: 'រ័ត្នដែន សេវាបញ្ជាក់ទីតាំង',
       type: 'ព្រះវិហារ',
       priceRange: '300\$ - 1000\$',
       imageUrl: 'assets/image4.png',
     ),
-    VenueItem(
+    ClothesItem(
       name: 'ពន្លឺព្រះច័ន្ទ បន្លឺឆ្លុះ',
       type: 'កំពង់ធំ',
       priceRange: '500\$ - 2000\$',
       imageUrl: 'assets/image5.png',
-    ),VenueItem(
+    ),ClothesItem(
       name: 'មរតកស្នេហា សេវាទៀនរចនា',
       type: 'តាកែវ',
       priceRange: '200\$ - 700\$',
       imageUrl: 'assets/image6.png',
     ),
-    VenueItem(
+    ClothesItem(
       name: 'ស្នាមអនុស្សាវរីយ៍ ថតព្រឹត្តិការណ៍',
       type: 'កំពត',
       priceRange: '450\$ - 1800\$',
       imageUrl: 'assets/image7.png',
     ),
-    VenueItem(
+    ClothesItem(
       name: 'កញ្ញាសោភា សេវាម៉ូតការពារ',
       type: 'ប៉ោយប៉ែត',
       priceRange: '300\$ - 1200\$',
       imageUrl: 'assets/image8.png',
     ),
-    VenueItem(
+    ClothesItem(
       name: 'សុវត្ថិភាព ដឹកជញ្ជូនភ្ញៀវ',
       type: 'កណ្ដាល',
       priceRange: '250\$ - 900\$',
       imageUrl: 'assets/image9.png',
     ),
-    VenueItem(
+    ClothesItem(
       name: 'សុណ្ឌតារា សេវាបង្ហាញអលង្ការ',
       type: 'កំពង់ចាម',
       priceRange: '500\$ - 2000\$',
@@ -128,7 +128,7 @@ class _VenueScreenState extends State<VenueScreen> {
                 ),
                 Spacer(),
                 Text(
-                  widget.venueType,
+                  widget.clothesType,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -252,7 +252,7 @@ class _VenueScreenState extends State<VenueScreen> {
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
-                children: filteredVenues.map((venue) => VenueCard(venue: venue,)).toList(),
+                children: filteredClothes.map((clothes) => ClothesCard(clothes: clothes,)).toList(),
               ),
             ),
           ),
@@ -265,13 +265,13 @@ class _VenueScreenState extends State<VenueScreen> {
   }
 }
 
-class VenueItem {
+class ClothesItem {
   final String name;
   final String type;
   final String priceRange;
   final String imageUrl;
 
-  const VenueItem({
+  const ClothesItem({
     required this.name,
     required this.type,
     required this.priceRange,
@@ -279,12 +279,12 @@ class VenueItem {
   });
 }
 
-class VenueCard extends StatelessWidget {
-  final VenueItem venue;
+class ClothesCard extends StatelessWidget {
+  final ClothesItem clothes;
 
-  const VenueCard({
+  const ClothesCard({
     super.key,
-    required this.venue,
+    required this.clothes,
   });
 
   @override
@@ -297,23 +297,23 @@ class VenueCard extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          // Navigate to venue details
+          // Navigate to clothes details
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              // Venue Image
+              // Clothes Image
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Container(
                   width: 80,
                   height: 80,
                   color: Colors.grey[300],
-                  child: venue.imageUrl.startsWith('http')
+                  child: clothes.imageUrl.startsWith('http')
                       ? Image.network(
-                          venue.imageUrl,
+                          clothes.imageUrl,
                           width: 80,
                           height: 80,
                           fit: BoxFit.cover,
@@ -322,7 +322,7 @@ class VenueCard extends StatelessWidget {
                           },
                         )
                       : Image.asset(
-                          venue.imageUrl,
+                          clothes.imageUrl,
                           width: 80,
                           height: 80,
                           fit: BoxFit.cover,
@@ -341,7 +341,7 @@ class VenueCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      venue.name,
+                      clothes.name,
                       style: const TextStyle(
                         fontFamily: 'KhmerOS',
                         fontSize: 16,
@@ -351,7 +351,7 @@ class VenueCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'ទីកន្លែង: ${venue.type}',
+                      'ទីកន្លែង: ${clothes.type}',
                       style: const TextStyle(
                         fontFamily: 'KhmerOS',
                         fontSize: 14,
@@ -360,7 +360,7 @@ class VenueCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'តម្លៃ: ${venue.priceRange}',
+                      'តម្លៃ: ${clothes.priceRange}',
                       style: const TextStyle(
                         fontFamily: 'KhmerOS',
                         fontSize: 14,

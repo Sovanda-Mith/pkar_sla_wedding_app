@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
 
-class VenueScreen extends StatefulWidget {
-  final String venueType;
+class FoodScreen extends StatefulWidget {
+  final String foodType;
   
-  const VenueScreen({
+  const FoodScreen({
     super.key,
-    required this.venueType, required String serviceType,
+    required this.foodType, required String serviceType,
   });
 
   @override
-  State<VenueScreen> createState() => _VenueScreenState();
+  State<FoodScreen> createState() => _FoodScreenState();
 }
 
-class _VenueScreenState extends State<VenueScreen> {
+class _FoodScreenState extends State<FoodScreen> {
   String selectedCity = 'ភ្នំពេញ';
   bool isDropdownOpen = false;
 
-  // Get filtered venues based on selected city
-  List<VenueItem> get filteredVenues {
-    return venues.where((venue) => venue.type == selectedCity).toList();
+  // Get filtered foods based on selected city
+  List<FoodItem> get filteredFoods {
+    return foods.where((food) => food.type == selectedCity).toList();
   }
 
 
@@ -36,61 +36,61 @@ class _VenueScreenState extends State<VenueScreen> {
     'កំពត',
   ];
 
-  final List<VenueItem> venues = [
-    VenueItem(
+  final List<FoodItem> foods = [
+    FoodItem(
       name: 'សម្សាញ់ភ្លើង ភ្លើងអេឡិចត្រូនិច',
       type: 'កំពត',
       priceRange: '450\$ - 2000\$',
       imageUrl: 'assets/image1.png',
     ),
-    VenueItem(
+    FoodItem(
       name: 'ចន្ទ្រា ផលិតវីដេអូខេមរា',
       type: 'កែប',
       priceRange: '500\$ - 1500\$',
       imageUrl: 'assets/image2.png',
     ),
-    VenueItem(
+    FoodItem(
       name: 'សោភ័ណ្ឌ សេវាបង្ហាញផ្កា',
       type: 'បាត់ដំបង',
       priceRange: '150\$ - 600\$',
       imageUrl: 'assets/image3.png',
     ),
-    VenueItem(
+    FoodItem(
       name: 'រ័ត្នដែន សេវាបញ្ជាក់ទីតាំង',
       type: 'ព្រះវិហារ',
       priceRange: '300\$ - 1000\$',
       imageUrl: 'assets/image4.png',
     ),
-    VenueItem(
+    FoodItem(
       name: 'ពន្លឺព្រះច័ន្ទ បន្លឺឆ្លុះ',
       type: 'កំពង់ធំ',
       priceRange: '500\$ - 2000\$',
       imageUrl: 'assets/image5.png',
-    ),VenueItem(
+    ),FoodItem(
       name: 'មរតកស្នេហា សេវាទៀនរចនា',
       type: 'តាកែវ',
       priceRange: '200\$ - 700\$',
       imageUrl: 'assets/image6.png',
     ),
-    VenueItem(
+    FoodItem(
       name: 'ស្នាមអនុស្សាវរីយ៍ ថតព្រឹត្តិការណ៍',
       type: 'កំពត',
       priceRange: '450\$ - 1800\$',
       imageUrl: 'assets/image7.png',
     ),
-    VenueItem(
+    FoodItem(
       name: 'កញ្ញាសោភា សេវាម៉ូតការពារ',
       type: 'ប៉ោយប៉ែត',
       priceRange: '300\$ - 1200\$',
       imageUrl: 'assets/image8.png',
     ),
-    VenueItem(
+    FoodItem(
       name: 'សុវត្ថិភាព ដឹកជញ្ជូនភ្ញៀវ',
       type: 'កណ្ដាល',
       priceRange: '250\$ - 900\$',
       imageUrl: 'assets/image9.png',
     ),
-    VenueItem(
+    FoodItem(
       name: 'សុណ្ឌតារា សេវាបង្ហាញអលង្ការ',
       type: 'កំពង់ចាម',
       priceRange: '500\$ - 2000\$',
@@ -104,7 +104,7 @@ class _VenueScreenState extends State<VenueScreen> {
       backgroundColor: Colors.grey[50],
       body: Column(
         children: [
-          // Custom Header with back arrow and venue title
+          // Custom Header with back arrow and food title
           Container(
             color: Color(0xFF3A693A),
             height: 100,
@@ -128,7 +128,7 @@ class _VenueScreenState extends State<VenueScreen> {
                 ),
                 Spacer(),
                 Text(
-                  widget.venueType,
+                  widget.foodType,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -252,7 +252,7 @@ class _VenueScreenState extends State<VenueScreen> {
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
-                children: filteredVenues.map((venue) => VenueCard(venue: venue,)).toList(),
+                children: filteredFoods.map((food) => FoodCard(food: food,)).toList(),
               ),
             ),
           ),
@@ -265,13 +265,13 @@ class _VenueScreenState extends State<VenueScreen> {
   }
 }
 
-class VenueItem {
+class FoodItem {
   final String name;
   final String type;
   final String priceRange;
   final String imageUrl;
 
-  const VenueItem({
+  const FoodItem({
     required this.name,
     required this.type,
     required this.priceRange,
@@ -279,12 +279,12 @@ class VenueItem {
   });
 }
 
-class VenueCard extends StatelessWidget {
-  final VenueItem venue;
+class FoodCard extends StatelessWidget {
+  final FoodItem food;
 
-  const VenueCard({
+  const FoodCard({
     super.key,
-    required this.venue,
+    required this.food,
   });
 
   @override
@@ -297,7 +297,7 @@ class VenueCard extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          // Navigate to venue details
+          // Navigate to food details
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
@@ -311,9 +311,9 @@ class VenueCard extends StatelessWidget {
                   width: 80,
                   height: 80,
                   color: Colors.grey[300],
-                  child: venue.imageUrl.startsWith('http')
+                  child: food.imageUrl.startsWith('http')
                       ? Image.network(
-                          venue.imageUrl,
+                          food.imageUrl,
                           width: 80,
                           height: 80,
                           fit: BoxFit.cover,
@@ -322,7 +322,7 @@ class VenueCard extends StatelessWidget {
                           },
                         )
                       : Image.asset(
-                          venue.imageUrl,
+                          food.imageUrl,
                           width: 80,
                           height: 80,
                           fit: BoxFit.cover,
@@ -335,13 +335,13 @@ class VenueCard extends StatelessWidget {
               
               const SizedBox(width: 16),
               
-              // Venue Details
+              // Food Details
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      venue.name,
+                      food.name,
                       style: const TextStyle(
                         fontFamily: 'KhmerOS',
                         fontSize: 16,
@@ -351,7 +351,7 @@ class VenueCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'ទីកន្លែង: ${venue.type}',
+                      'ទីកន្លែង: ${food.type}',
                       style: const TextStyle(
                         fontFamily: 'KhmerOS',
                         fontSize: 14,
@@ -360,7 +360,7 @@ class VenueCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'តម្លៃ: ${venue.priceRange}',
+                      'តម្លៃ: ${food.priceRange}',
                       style: const TextStyle(
                         fontFamily: 'KhmerOS',
                         fontSize: 14,
