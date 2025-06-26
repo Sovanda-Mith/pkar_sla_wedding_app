@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/screens/account_info_screen.dart';
 import 'package:pkar_sla_wedding_app/widgets/custom_button.dart';
+import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
 import 'package:pkar_sla_wedding_app/widgets/title_header.dart';
 
 enum UserType { normal, business }
@@ -36,7 +37,11 @@ class _AccountScreenState extends State<AccountScreen> {
 
     return Scaffold(
       body: Column(
-        children: [TitleHeader(title: 'គណនី'), Expanded(child: content)],
+        children: [
+          TitleHeader(title: 'គណនី'),
+          Expanded(child: content),
+          FooterNav(),
+        ],
       ),
     );
   }

@@ -7,6 +7,7 @@ class HeaderNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      
       color: Color(0xFF3A693A),
       height: 100,
       alignment: Alignment.center,

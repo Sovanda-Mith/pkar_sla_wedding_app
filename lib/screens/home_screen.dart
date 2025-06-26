@@ -8,41 +8,49 @@ class HomeScreen extends StatelessWidget {
   final List<Map<String, String>> categories = [
     {
       'title': 'រោងការ',
+      'nav': '/venue',
       'iconPath': 'assets/icons/hall.png',
       'imagePath': 'assets/hall.png',
     },
     {
       'title': 'ដេគ័រ',
+      'nav': '/decor',
       'iconPath': 'assets/icons/decor.png',
       'imagePath': 'assets/decor.png',
     },
     {
       'title': 'សម្លៀកបំពាក់',
+      'nav': '/clothes',
       'iconPath': 'assets/icons/clothes.png',
       'imagePath': 'assets/clothes.png',
     },
     {
       'title': 'ជាងផាត់មុខ',
+      'nav': '/makeup',
       'iconPath': 'assets/icons/makeup.png',
       'imagePath': 'assets/makeup.png',
     },
     {
       'title': 'ជាងថតរូប',
+      'nav': '/photographer',
       'iconPath': 'assets/icons/photographer.png',
       'imagePath': 'assets/photographer.png',
     },
     {
       'title': 'ឥន្ត្រី',
+      'nav': '/music',
       'iconPath': 'assets/icons/music.png',
       'imagePath': 'assets/music.png',
     },
     {
       'title': 'ទីកន្លែង',
+      'nav': '/venue',
       'iconPath': 'assets/icons/venue.png',
       'imagePath': 'assets/venue.png',
     },
     {
       'title': 'ម្ហូបអាហារ',
+      'nav': '/food',
       'iconPath': 'assets/icons/food.png',
       'imagePath': 'assets/food.png',
     },
@@ -115,6 +123,7 @@ class HomeScreen extends StatelessWidget {
             children:
                 categories.map((category) {
                   return CategoryCard(
+                    nav: category['nav']!,
                     iconPath: category['iconPath']!,
                     imagePath: category['imagePath']!,
                     title: category['title']!,
@@ -133,9 +142,11 @@ class CategoryCard extends StatelessWidget {
   final String iconPath;
   final String imagePath;
   final String title;
+  final String nav;
 
   const CategoryCard({
     super.key,
+    required this.nav,
     required this.iconPath,
     required this.imagePath,
     required this.title,
@@ -143,18 +154,23 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(iconPath, width: 15, height: 15),
-        SizedBox(height: 8),
-        Image.asset(imagePath, width: 80, height: 80),
-        SizedBox(height: 5),
-        Text(
-          title,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-        ),
-      ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, nav);
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(iconPath, width: 15, height: 15),
+          SizedBox(height: 8),
+          Image.asset(imagePath, width: 80, height: 80),
+          SizedBox(height: 5),
+          Text(
+            title,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          ),
+        ],
+      ),
     );
   }
 }
