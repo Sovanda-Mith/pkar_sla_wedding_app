@@ -34,6 +34,17 @@ class _MakeupScreenState extends State<MakeupScreen> {
     'ព្រៃវែង',
     'បន្ទាយមានជ័យ',
     'កំពត',
+    'កោះកុង',
+    'ក្រចេះ',
+    'ឧត្ដរមានជ័យ',
+    'ប៉ៃលិន',
+    'ព្រះវិហារ',
+    'ព្រះសីហនុ',
+    'រតនគិរី',
+    'ស្ទឹងត្រែង',
+    'ស្វាយរៀង',
+    'តាកែវ',
+    'ត្បូងឃ្មុំ',
   ];
 
   final List<MakeupItem> makeups = [
@@ -68,34 +79,22 @@ class _MakeupScreenState extends State<MakeupScreen> {
       imageUrl: 'assets/image5.png',
     ),
     MakeupItem(
-      name: 'មរតកស្នេហា សេវាទៀនរចនា',
-      type: 'តាកែវ',
+      name: 'ប៉ូលីណា ផាត់មុខម៉ូដថ្មី',
+      type: 'សៀមរាប',
       priceRange: '200\$ - 700\$',
-      imageUrl: 'assets/image6.png',
+      imageUrl: 'assets/image14.png',
     ),
     MakeupItem(
-      name: 'ស្នាមអនុស្សាវរីយ៍ ថតព្រឹត្តិការណ៍',
-      type: 'កំពត',
-      priceRange: '450\$ - 1800\$',
-      imageUrl: 'assets/image7.png',
+      name: 'សុភា ម៉េកអាប់ជួរមុខឯកទេស',
+      type: 'កែប',
+      priceRange: '250\$ - 580\$',
+      imageUrl: 'assets/image15.png',
     ),
     MakeupItem(
-      name: 'កញ្ញាសោភា សេវាម៉ូតការពារ',
-      type: 'ប៉ោយប៉ែត',
-      priceRange: '300\$ - 1200\$',
-      imageUrl: 'assets/image8.png',
-    ),
-    MakeupItem(
-      name: 'សុវត្ថិភាព ដឹកជញ្ជូនភ្ញៀវ',
-      type: 'កណ្ដាល',
-      priceRange: '250\$ - 900\$',
-      imageUrl: 'assets/image9.png',
-    ),
-    MakeupItem(
-      name: 'សុណ្ឌតារា សេវាបង្ហាញអលង្ការ',
-      type: 'កំពង់ចាម',
-      priceRange: '500\$ - 2000\$',
-      imageUrl: 'assets/image10.png',
+      name: 'អុិនណា សេវាផាត់មុខពិធីសំខាន់',
+      type: 'ត្បូងឃ្មុំ',
+      priceRange: '300\$ - 900\$',
+      imageUrl: 'assets/image16.png',
     ),
   ];
 

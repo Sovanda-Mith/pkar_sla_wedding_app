@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pkar_sla_wedding_app/widgets/header_nav.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
 
 class ClothesScreen extends StatefulWidget {
   final String clothesType;
 
-  const ClothesScreen({
-    super.key,
-    required this.clothesType,
-    required String serviceType,
-  });
+  const ClothesScreen({super.key, required this.clothesType});
 
   @override
   State<ClothesScreen> createState() => _ClothesScreenState();
@@ -34,6 +31,16 @@ class _ClothesScreenState extends State<ClothesScreen> {
     'ព្រៃវែង',
     'បន្ទាយមានជ័យ',
     'កំពត',
+    'កោះកុង',
+    'ឧត្ដរមានជ័យ',
+    'ប៉ៃលិន',
+    'ព្រះវិហារ',
+    'ព្រះសីហនុ',
+    'រតនគិរី',
+    'ស្ទឹងត្រែង',
+    'ស្វាយរៀង',
+    'តាកែវ',
+    'ត្បូងឃ្មុំ',
   ];
 
   final List<ClothesItem> clothes = [
@@ -45,7 +52,7 @@ class _ClothesScreenState extends State<ClothesScreen> {
     ),
     ClothesItem(
       name: 'ចន្ទ្រា ផលិតវីដេអូខេមរា',
-      type: 'កែប',
+      type: 'ភ្នំពេញ',
       priceRange: '500\$ - 1500\$',
       imageUrl: 'assets/image2.png',
     ),
@@ -63,7 +70,7 @@ class _ClothesScreenState extends State<ClothesScreen> {
     ),
     ClothesItem(
       name: 'ពន្លឺព្រះច័ន្ទ បន្លឺឆ្លុះ',
-      type: 'កំពង់ធំ',
+      type: 'សៀមរាប', // Changed from 'កំពង់ធំ' to match cities list
       priceRange: '500\$ - 2000\$',
       imageUrl: 'assets/image5.png',
     ),
@@ -115,19 +122,10 @@ class _ClothesScreenState extends State<ClothesScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Icon(Icons.arrow_back, color: Colors.white, size: 30),
                 ),
-                Spacer(),
                 Text(
                   widget.clothesType,
                   style: TextStyle(
@@ -136,7 +134,6 @@ class _ClothesScreenState extends State<ClothesScreen> {
                     color: Colors.white,
                   ),
                 ),
-                Spacer(),
                 Row(
                   children: [
                     Image.asset(
@@ -307,6 +304,12 @@ class ClothesCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           // Navigate to clothes details
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ClothesDetailScreen(clothes: clothes),
+            ),
+          ); // Debug print
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
@@ -321,25 +324,7 @@ class ClothesCard extends StatelessWidget {
                   height: 80,
                   color: Colors.grey[300],
                   child:
-                      clothes.imageUrl.startsWith('http')
-                          ? Image.network(
-                            clothes.imageUrl,
-                            width: 80,
-                            height: 80,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return _buildPlaceholder();
-                            },
-                          )
-                          : Image.asset(
-                            clothes.imageUrl,
-                            width: 80,
-                            height: 80,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return _buildPlaceholder();
-                            },
-                          ),
+                      _buildPlaceholder(), // Use placeholder instead of asset images
                 ),
               ),
 
@@ -396,6 +381,232 @@ class ClothesCard extends StatelessWidget {
       child: const Center(
         child: Icon(Icons.image, color: Colors.grey, size: 30),
       ),
+    );
+  }
+}
+
+class ClothesDetailScreen extends StatelessWidget {
+  final ClothesItem clothes;
+
+  const ClothesDetailScreen({super.key, required this.clothes});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          const HeaderNav(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Main Image
+                  Container(
+                    width: double.infinity,
+                    height: 300,
+                    margin: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          spreadRadius: 2,
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        clothes.imageUrl,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[300],
+                            child: const Icon(Icons.image, size: 80),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+
+                  // Thumbnail Images
+                  Container(
+                    height: 80,
+                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        _buildThumbnail(clothes.imageUrl),
+                        const SizedBox(width: 12),
+                        _buildThumbnail(clothes.imageUrl),
+                        const SizedBox(width: 12),
+                        _buildThumbnail(clothes.imageUrl),
+                        const Spacer(),
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF4A7C59),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: const Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // Title and Details
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          clothes.name,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[800],
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+
+                        // Details Row
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  _buildDetailRow(
+                                    'ប្រពេណ្ធ:',
+                                    'ម៉ាករ, ម្តុមអាណា, សម្ល្បីកបរកាដ',
+                                  ),
+                                  const SizedBox(height: 8),
+                                  _buildDetailRow('តម្លៃ:', clothes.priceRange),
+                                  const SizedBox(height: 8),
+                                  _buildDetailRow('ទីតាំង:', clothes.type),
+                                  const SizedBox(height: 8),
+                                  _buildDetailRow(
+                                    'លេខទូរស័ព្ទ:',
+                                    '012 345 678',
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 100), // Space for bottom button
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              spreadRadius: 1,
+              blurRadius: 8,
+              offset: const Offset(0, -2),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Contact Button
+            Container(
+              width: double.infinity,
+              height: 50,
+              margin: const EdgeInsets.only(bottom: 16),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF90EE90),
+                  foregroundColor: Colors.black,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+                child: const Text(
+                  'ទំនាក់ទំនង',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
+
+            // Footer Navigation
+            const FooterNav(currentRoute: '/services'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildThumbnail(String imagePath) {
+    return Container(
+      width: 60,
+      height: 60,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey[300]!),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.asset(
+          imagePath,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return Container(
+              color: Colors.grey[300],
+              child: const Icon(Icons.image, size: 30),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDetailRow(String label, String value) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.grey[600],
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            value,
+            style: TextStyle(fontSize: 14, color: Colors.grey[800]),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -18,7 +18,7 @@ class _DecorScreenState extends State<DecorScreen> {
   String selectedCity = 'ភ្នំពេញ';
   bool isDropdownOpen = false;
 
-  // Get filtered clothes based on selected city
+  // Get filtered decors based on selected city
   List<DecorItem> get filteredDecors {
     return decors.where((decor) => decor.type == selectedCity).toList();
   }
@@ -34,32 +34,25 @@ class _DecorScreenState extends State<DecorScreen> {
     'ព្រៃវែង',
     'បន្ទាយមានជ័យ',
     'កំពត',
+    'កោះកុង',
+    'ក្រចេះ',
+    'ឧត្ដរមានជ័យ',
+    'ប៉ៃលិន',
+    'ព្រះវិហារ',
+    'ព្រះសីហនុ',
+    'រតនគិរី',
+    'ស្ទឹងត្រែង',
+    'ស្វាយរៀង',
+    'តាកែវ',
+    'ត្បូងឃ្មុំ',
   ];
 
   final List<DecorItem> decors = [
     DecorItem(
-      name: 'សម្សាញ់ភ្លើង ភ្លើងអេឡិចត្រូនិច',
-      type: 'កំពត',
-      priceRange: '450\$ - 2000\$',
-      imageUrl: 'assets/image1.png',
-    ),
-    DecorItem(
-      name: 'ចន្ទ្រា ផលិតវីដេអូខេមរា',
-      type: 'កែប',
-      priceRange: '500\$ - 1500\$',
-      imageUrl: 'assets/image2.png',
-    ),
-    DecorItem(
-      name: 'សោភ័ណ្ឌ សេវាបង្ហាញផ្កា',
-      type: 'បាត់ដំបង',
-      priceRange: '150\$ - 600\$',
-      imageUrl: 'assets/image3.png',
-    ),
-    DecorItem(
-      name: 'រ័ត្នដែន សេវាបញ្ជាក់ទីតាំង',
-      type: 'ព្រះវិហារ',
-      priceRange: '300\$ - 1000\$',
-      imageUrl: 'assets/image4.png',
+      name: 'ផ្កាស្រីសោធន៍ សេវាផ្កា',
+      type: 'សៀមរាប',
+      priceRange: '200\$ - 700\$',
+      imageUrl: 'assets/image6.png',
     ),
     DecorItem(
       name: 'ពន្លឺព្រះច័ន្ទ បន្លឺឆ្លុះ',
@@ -80,21 +73,21 @@ class _DecorScreenState extends State<DecorScreen> {
       imageUrl: 'assets/image7.png',
     ),
     DecorItem(
-      name: 'កញ្ញាសោភា សេវាម៉ូតការពារ',
-      type: 'ប៉ោយប៉ែត',
-      priceRange: '300\$ - 1200\$',
-      imageUrl: 'assets/image8.png',
-    ),
-    DecorItem(
-      name: 'សុវត្ថិភាព ដឹកជញ្ជូនភ្ញៀវ',
-      type: 'កណ្ដាល',
-      priceRange: '250\$ - 900\$',
-      imageUrl: 'assets/image9.png',
-    ),
-    DecorItem(
       name: 'សុណ្ឌតារា សេវាបង្ហាញអលង្ការ',
       type: 'កំពង់ចាម',
       priceRange: '500\$ - 2000\$',
+      imageUrl: 'assets/image8.png',
+    ),
+    DecorItem(
+      name: 'ដង្ហែរអាគារ សេវាគ្រឿងក្រាហ្វិក',
+      type: 'កែប',
+      priceRange: '450\$ - 1700\$',
+      imageUrl: 'assets/image9.png',
+    ),
+    DecorItem(
+      name: 'ហុងហុក សេវាកាត់តួអង្គឌីជីថល',
+      type: 'ស្ទឹងត្រែង',
+      priceRange: '400\$ - 1600\$',
       imageUrl: 'assets/image10.png',
     ),
   ];

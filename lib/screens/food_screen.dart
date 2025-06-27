@@ -34,14 +34,25 @@ class _FoodScreenState extends State<FoodScreen> {
     'ព្រៃវែង',
     'បន្ទាយមានជ័យ',
     'កំពត',
+    'កោះកុង',
+    'ក្រចេះ',
+    'ឧត្ដរមានជ័យ',
+    'ប៉ៃលិន',
+    'ព្រះវិហារ',
+    'ព្រះសីហនុ',
+    'រតនគិរី',
+    'ស្ទឹងត្រែង',
+    'ស្វាយរៀង',
+    'តាកែវ',
+    'ត្បូងឃ្មុំ',
   ];
 
   final List<FoodItem> foods = [
     FoodItem(
-      name: 'សម្សាញ់ភ្លើង ភ្លើងអេឡិចត្រូនិច',
-      type: 'កំពត',
-      priceRange: '450\$ - 2000\$',
-      imageUrl: 'assets/image1.png',
+      name: 'ស៊ុនស៊ូគ្រីម - នំខេកគ្រួសារ',
+      type: 'ភ្នំពេញ',
+      priceRange: '200\$ - 900\$',
+      imageUrl: 'assets/image11.png',
     ),
     FoodItem(
       name: 'ចន្ទ្រា ផលិតវីដេអូខេមរា',
@@ -92,10 +103,16 @@ class _FoodScreenState extends State<FoodScreen> {
       imageUrl: 'assets/image9.png',
     ),
     FoodItem(
-      name: 'សុណ្ឌតារា សេវាបង្ហាញអលង្ការ',
+      name: 'SweetHouse Cambodia - នំអន្ដរជាតិ',
       type: 'កំពង់ចាម',
-      priceRange: '500\$ - 2000\$',
-      imageUrl: 'assets/image10.png',
+      priceRange: '300\$ - 1200\$',
+      imageUrl: 'assets/image12.png',
+    ),
+    FoodItem(
+      name: 'Brown\'s Wedding Cake',
+      type: 'សៀមរាប',
+      priceRange: '350\$ - 1500\$',
+      imageUrl: 'assets/image13.png',
     ),
   ];
 

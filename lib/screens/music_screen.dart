@@ -34,14 +34,25 @@ class _MusicScreenState extends State<MusicScreen> {
     'ព្រៃវែង',
     'បន្ទាយមានជ័យ',
     'កំពត',
+    'កោះកុង',
+    'ក្រចេះ',
+    'ឧត្ដរមានជ័យ',
+    'ប៉ៃលិន',
+    'ព្រះវិហារ',
+    'ព្រះសីហនុ',
+    'រតនគិរី',
+    'ស្ទឹងត្រែង',
+    'ស្វាយរៀង',
+    'តាកែវ',
+    'ត្បូងឃ្មុំ',
   ];
 
   final List<MusicItem> musics = [
     MusicItem(
-      name: 'សម្សាញ់ភ្លើង ភ្លើងអេឡិចត្រូនិច',
+      name: 'ស៊ិនស៊ីនាដា តន្ត្រីជាងបើកសិល្បៈ',
       type: 'កំពត',
-      priceRange: '450\$ - 2000\$',
-      imageUrl: 'assets/image1.png',
+      priceRange: '500\$ - 1700\$',
+      imageUrl: 'assets/image17.png',
     ),
     MusicItem(
       name: 'ចន្ទ្រា ផលិតវីដេអូខេមរា',
@@ -80,22 +91,16 @@ class _MusicScreenState extends State<MusicScreen> {
       imageUrl: 'assets/image7.png',
     ),
     MusicItem(
-      name: 'កញ្ញាសោភា សេវាម៉ូតការពារ',
-      type: 'ប៉ោយប៉ែត',
+      name: 'ក្រុមភ្លេងកំណត់ស្នេហា',
+      type: 'បន្ទាយមានជ័យ',
       priceRange: '300\$ - 1200\$',
-      imageUrl: 'assets/image8.png',
+      imageUrl: 'assets/image18.png',
     ),
     MusicItem(
-      name: 'សុវត្ថិភាព ដឹកជញ្ជូនភ្ញៀវ',
-      type: 'កណ្ដាល',
-      priceRange: '250\$ - 900\$',
-      imageUrl: 'assets/image9.png',
-    ),
-    MusicItem(
-      name: 'សុណ្ឌតារា សេវាបង្ហាញអលង្ការ',
-      type: 'កំពង់ចាម',
-      priceRange: '500\$ - 2000\$',
-      imageUrl: 'assets/image10.png',
+      name: 'DJ គីមហុង ភ្លេង EDM និងស្រុកខ្មែរ',
+      type: 'ភ្នំពេញ',
+      priceRange: '400\$ - 1500\$',
+      imageUrl: 'assets/image19.png',
     ),
   ];
 
