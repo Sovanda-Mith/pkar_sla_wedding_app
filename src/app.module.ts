@@ -20,6 +20,7 @@ import { BookingModule } from './booking/booking.module';
 import { Booking } from './booking/entities/booking.entity';
 import { BookingPayment } from './booking/entities/booking-payment.entity';
 import { BookingReview } from './booking/entities/booking-review.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -55,6 +56,7 @@ import { BookingReview } from './booking/entities/booking-review.entity';
     NotificationModule,
     BookingModule,
     BookingReview,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
