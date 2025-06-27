@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
         '/home': (context) => HomeScreen(),
         '/account':
             (context) =>
-                const AccountScreen(isOwner: true, userType: UserType.normal),
+                const AccountScreen(isOwner: true, userType: UserType.business),
         '/services': (context) => const ServicesScreen(),
       },
       home: HomeScreen(),
