@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
+import 'package:pkar_sla_wedding_app/widgets/title_header.dart';
 
 class MakeupScreen extends StatefulWidget {
   final String makeupType;
@@ -105,6 +106,7 @@ class _MakeupScreenState extends State<MakeupScreen> {
       body: Column(
         children: [
           // Custom Header with back arrow and makeup title
+          /*
           Container(
             color: Color(0xFF3A693A),
             height: 100,
@@ -156,6 +158,8 @@ class _MakeupScreenState extends State<MakeupScreen> {
               ],
             ),
           ),
+          */
+          TitleHeader(title: widget.makeupType),
 
           // City Dropdown Bar
           GestureDetector(

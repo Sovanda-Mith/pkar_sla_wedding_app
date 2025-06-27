@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
+import 'package:pkar_sla_wedding_app/widgets/title_header.dart';
 
 class FoodScreen extends StatefulWidget {
   final String foodType;
@@ -123,6 +124,7 @@ class _FoodScreenState extends State<FoodScreen> {
       body: Column(
         children: [
           // Custom Header with back arrow and food title
+          /*
           Container(
             color: Color(0xFF3A693A),
             height: 100,
@@ -174,6 +176,8 @@ class _FoodScreenState extends State<FoodScreen> {
               ],
             ),
           ),
+          */
+          TitleHeader(title: widget.foodType),
 
           // City Dropdown Bar
           GestureDetector(

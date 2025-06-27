@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
+import 'package:pkar_sla_wedding_app/widgets/title_header.dart';
 
 class DecorScreen extends StatefulWidget {
   final String decorType;
@@ -99,6 +100,7 @@ class _DecorScreenState extends State<DecorScreen> {
       body: Column(
         children: [
           // Custom Header with back arrow and venue title
+          /*
           Container(
             color: Color(0xFF3A693A),
             height: 100,
@@ -150,6 +152,8 @@ class _DecorScreenState extends State<DecorScreen> {
               ],
             ),
           ),
+          */
+          TitleHeader(title: widget.decorType),
 
           // City Dropdown Bar
           GestureDetector(

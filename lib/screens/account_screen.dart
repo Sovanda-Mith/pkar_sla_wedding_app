@@ -330,7 +330,17 @@ class _AccountScreenState extends State<AccountScreen> {
           _selectedServices.join(', '),
           () => _editListDialog(
             title: 'ជ្រើសសេវាកម្ម',
-            options: ['រោងការ', 'ម្ហូបអាហារ', 'សម្លៀកបំពាក់', 'អ្នកផាត់មុខ'],
+            options: [
+              'រោងការ',
+              'ម្ហូបអាហារ',
+              'សម្លៀកបំពាក់',
+              'អ្នកផាត់មុខ',
+              'ចុងភៅ',
+              'ដេគ័រ',
+              'ជាងថត​',
+              'តន្ត្រី',
+              'ទីកន្លែង',
+            ],
             selectedValues: _selectedServices,
             onSaved: (val) => setState(() => _selectedServices = val),
           ),

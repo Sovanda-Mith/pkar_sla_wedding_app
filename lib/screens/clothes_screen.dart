@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/widgets/header_nav.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
+import 'package:pkar_sla_wedding_app/widgets/title_header.dart';
 
 class ClothesScreen extends StatefulWidget {
   final String clothesType;
@@ -113,6 +114,7 @@ class _ClothesScreenState extends State<ClothesScreen> {
       body: Column(
         children: [
           // Custom Header with back arrow and venue title
+          /*
           Container(
             color: Color(0xFF3A693A),
             height: 100,
@@ -154,6 +156,8 @@ class _ClothesScreenState extends State<ClothesScreen> {
               ],
             ),
           ),
+          */
+          TitleHeader(title: widget.clothesType),
 
           // City Dropdown Bar
           GestureDetector(
