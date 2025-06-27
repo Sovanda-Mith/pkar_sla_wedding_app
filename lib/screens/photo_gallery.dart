@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pkar_sla_wedding_app/widgets/header_nav.dart';
 import 'package:pkar_sla_wedding_app/widgets/title_header.dart';
 
 class PhotoGallery extends StatelessWidget {
@@ -13,7 +12,6 @@ class PhotoGallery extends StatelessWidget {
       'assets/makeup.png',
       'assets/music.png',
       'assets/photographer.png',
-      
     ];
     return Scaffold(
       backgroundColor: Colors.white,

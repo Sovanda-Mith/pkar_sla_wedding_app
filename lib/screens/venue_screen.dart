@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pkar_sla_wedding_app/screens/account_screen.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
 import 'package:pkar_sla_wedding_app/widgets/title_header.dart';
 
@@ -310,7 +311,18 @@ class VenueCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: () {
-          // Navigate to venue details
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return AccountScreen(
+                  userType: UserType.business,
+                  isOwner: false,
+                  title: venue.name,
+                );
+              },
+            ),
+          );
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(

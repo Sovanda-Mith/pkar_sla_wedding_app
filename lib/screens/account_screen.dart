@@ -13,11 +13,13 @@ enum UserType { normal, business }
 class AccountScreen extends StatefulWidget {
   final UserType userType;
   final bool isOwner;
+  final String? title;
 
   const AccountScreen({
     super.key,
     required this.userType,
     required this.isOwner,
+    this.title,
   });
 
   @override
@@ -71,7 +73,7 @@ class _AccountScreenState extends State<AccountScreen> {
     return Scaffold(
       body: Column(
         children: [
-          TitleHeader(title: 'គណនី'),
+          TitleHeader(title: widget.title ?? 'គណនី'),
           Expanded(child: content),
           FooterNav(currentRoute: '/account'),
         ],
