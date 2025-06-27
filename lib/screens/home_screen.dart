@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pkar_sla_wedding_app/widgets/header_nav.dart';
 import 'package:pkar_sla_wedding_app/widgets/footer_nav.dart';
+import 'package:pkar_sla_wedding_app/screens/clothes_screen.dart';
+import 'package:pkar_sla_wedding_app/screens/decor_screen.dart';
+import 'package:pkar_sla_wedding_app/screens/food_screen.dart';
+import 'package:pkar_sla_wedding_app/screens/makeup_screen.dart';
+import 'package:pkar_sla_wedding_app/screens/photography_screen.dart';
+import 'package:pkar_sla_wedding_app/screens/music_screen.dart';
+import 'package:pkar_sla_wedding_app/screens/venue_screen.dart';
+
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -10,43 +18,86 @@ class HomeScreen extends StatelessWidget {
       'title': 'រោងការ',
       'iconPath': 'assets/icons/hall.png',
       'imagePath': 'assets/hall.png',
+      'route': 'hall',
     },
     {
       'title': 'ដេគ័រ',
       'iconPath': 'assets/icons/decor.png',
       'imagePath': 'assets/decor.png',
+      'route': 'decor',
     },
     {
       'title': 'សម្លៀកបំពាក់',
       'iconPath': 'assets/icons/clothes.png',
       'imagePath': 'assets/clothes.png',
+      'route': 'clothes',
     },
     {
       'title': 'ជាងផាត់មុខ',
       'iconPath': 'assets/icons/makeup.png',
       'imagePath': 'assets/makeup.png',
+      'route': 'makeup',
     },
     {
       'title': 'ជាងថតរូប',
       'iconPath': 'assets/icons/photographer.png',
       'imagePath': 'assets/photographer.png',
+      'route': 'photographer',
     },
     {
       'title': 'ឥន្ត្រី',
       'iconPath': 'assets/icons/music.png',
       'imagePath': 'assets/music.png',
+      'route': 'music',
     },
     {
       'title': 'ទីកន្លែង',
       'iconPath': 'assets/icons/venue.png',
       'imagePath': 'assets/venue.png',
+      'route': 'venue',
     },
     {
       'title': 'ម្ហូបអាហារ',
       'iconPath': 'assets/icons/food.png',
       'imagePath': 'assets/food.png',
+      'route': 'food',
     },
   ];
+
+  void _navigateToService(BuildContext context, String route, String title) {
+    switch (route) {
+      case 'clothes':
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ClothesScreen(clothesType: title),
+          ),
+        );
+        break;
+      case 'decor':
+        Navigator.push(context, MaterialPageRoute(builder: (context) => DecorScreen(decorType: title, serviceType: '')));
+        break;
+      case 'makeup':
+        Navigator.push(context, MaterialPageRoute(builder: (context) => MakeupScreen(makeupType: title, serviceType: '',)));
+        break;
+      case 'photographer':
+        Navigator.push(context, MaterialPageRoute(builder: (context) => PhotographyScreen(photographyType: title, serviceType: '')));
+        break;
+      case 'music':
+        Navigator.push(context, MaterialPageRoute(builder: (context) => MusicScreen(musicType: title, serviceType: '' )));
+        break;
+      case 'venue':
+        Navigator.push(context, MaterialPageRoute(builder: (context) => VenueScreen(venueType: title, serviceType: '')));
+        break;
+      case 'food':
+        Navigator.push(context, MaterialPageRoute(builder: (context) => FoodScreen(foodType: title, serviceType: '')));
+        break;
+      default:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('$title screen not implemented yet')),
+        );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +169,7 @@ class HomeScreen extends StatelessWidget {
                     iconPath: category['iconPath']!,
                     imagePath: category['imagePath']!,
                     title: category['title']!,
+                    onTap: () => _navigateToService(context, category['route']!, category['title']!),
                   );
                 }).toList(),
           ),
@@ -133,28 +185,33 @@ class CategoryCard extends StatelessWidget {
   final String iconPath;
   final String imagePath;
   final String title;
+  final VoidCallback onTap;
 
   const CategoryCard({
     super.key,
     required this.iconPath,
     required this.imagePath,
     required this.title,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(iconPath, width: 15, height: 15),
-        SizedBox(height: 8),
-        Image.asset(imagePath, width: 80, height: 80),
-        SizedBox(height: 5),
-        Text(
-          title,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-        ),
-      ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(iconPath, width: 15, height: 15),
+          SizedBox(height: 8),
+          Image.asset(imagePath, width: 80, height: 80),
+          SizedBox(height: 5),
+          Text(
+            title,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          ),
+        ],
+      ),
     );
   }
 }
