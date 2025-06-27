@@ -508,7 +508,7 @@ class _MultiSelectDialogState extends State<_MultiSelectDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text(
-        'ជ្រើសរើសសេវាកម្ម',
+        'សូមជ្រើសរើស',
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,

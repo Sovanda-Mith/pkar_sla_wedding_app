@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pkar_sla_wedding_app/screens/home_screen.dart';
 import 'user_choice_screen.dart';
 
 class UserRegister extends StatelessWidget {
@@ -186,7 +187,10 @@ class UserRegister extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  // Handle button press
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
                 },
                 child: Text(
                   'បង្កើតគណនី',
