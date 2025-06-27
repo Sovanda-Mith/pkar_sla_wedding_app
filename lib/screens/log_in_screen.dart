@@ -179,58 +179,6 @@ class LogInScreen extends StatelessWidget {
                 'assets/couple.png', // Replace with your asset path
                 width: double.infinity,
               ),
-              const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.only(left: 50),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'លេខកូដ',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green[900],
-                      fontFamily: 'Noto Sans Khmer',
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 50, right: 50),
-                child: TextField(
-                  decoration: const InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 40),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green[900],
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 60,
-                    vertical: 10,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-                onPressed: () {
-                  // Handle button press
-                },
-                child: Text(
-                  'ចូលគណនី',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Noto Sans Khmer',
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 40),
-              Image.asset('assets/couple.png', width: double.infinity),
             ],
           ),
         ),
